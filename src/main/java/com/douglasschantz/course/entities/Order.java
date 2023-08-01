@@ -4,14 +4,13 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,9 +24,9 @@ public class Order implements Serializable {
 	@Column(name = "ID", nullable = false)
 	private Long id;
 	private Instant moment;
-
-	@ManyToAny
-	@JoinColumn(name = "client_id")
+	
+	@ManyToOne
+    @JoinColumn(name = "personnel_id")
 	private User client;
 
 	public Order() {
